@@ -109,8 +109,10 @@ void post_check(node** ASM_head)
             char op_1[100] = "";
             char inc[10] = "";
             char reg_[10] = "";
-            itoa(post_inc_check[i],inc,10);
-            itoa(reg,reg_,10);
+            //itoa(post_inc_check[i],inc,10);
+            sprintf(inc,"%d",post_inc_check[i]);
+			//itoa(reg,reg_,10);
+			sprintf(reg_,"%d",reg);
             strcat(op_1,"add ");
             strcat(op_1,"r");
             strcat(op_1,reg_);
@@ -121,7 +123,8 @@ void post_check(node** ASM_head)
             insert(ASM_head,op_1,POSTINC_);
             char op_2[100] = "";
             char store_reg[10] = "";
-            itoa(i*4,store_reg,10);
+            //itoa(i*4,store_reg,10);
+			sprintf(store_reg,"%d",i*4);
             strcat(op_2,"store ");
             strcat(op_2,"[");
             strcat(op_2,store_reg);
@@ -136,9 +139,11 @@ void post_check(node** ASM_head)
             char op_1[100] = "";
             char dec[10] = "";
             char reg_[10] = "";
-            itoa(post_dec_check[i],dec,10);
-            itoa(reg,reg_,10);
-            strcat(op_1,"sub ");
+            //itoa(post_dec_check[i],dec,10);
+            sprintf(dec,"%d",post_dec_check[i]);
+			//itoa(reg,reg_,10);
+            sprintf(reg_,"%d",reg);
+			strcat(op_1,"sub ");
             strcat(op_1,"r");
             strcat(op_1,reg_);
             strcat(op_1," r");
@@ -148,8 +153,9 @@ void post_check(node** ASM_head)
             insert(ASM_head,op_1,POSTDEC_);
             char op_2[100] = "";
             char store_reg[10] = "";
-            itoa(i*4,store_reg,10);
-            strcat(op_2,"store ");
+            //itoa(i*4,store_reg,10);
+            sprintf(store_reg,"%d",i*4);
+			strcat(op_2,"store ");
             strcat(op_2,"[");
             strcat(op_2,store_reg);
             strcat(op_2,"]");
@@ -226,7 +232,7 @@ int main() {
 		if (len == 0) continue;
 		AST* ast_root = parser(content, len);
 		semantic_check(ast_root);
-		AST_print(ast_root);
+		//AST_print(ast_root);
 		AST_head = ast_root;
 		node* ASM_head = NULL;
 		codegen(ast_root,&ASM_head);
@@ -505,9 +511,11 @@ int codegen(AST* root,node** ASM_head) {
 		int reg = codegen(root->rhs,ASM_head);
         id_at_reg[left/4] = reg;
 		char reg_str[10]="";
-		itoa(reg, reg_str, 10);
+		//itoa(reg, reg_str, 10);
+		sprintf(reg_str,"%d",reg);
 		char expr[10]="";
-		itoa(left, expr, 10);
+		//itoa(left, expr, 10);
+		sprintf(expr,"%d",left);
 		char op[100] = "";
 		strcat(op, store);
 		strcat(op, "[");
@@ -529,12 +537,15 @@ int codegen(AST* root,node** ASM_head) {
 		int reg3 = find_avai_reg();
 		reg_arr[reg3] = 1;
 		char reg3_[10] = "";
-		itoa(reg3,reg3_,10);
+		//itoa(reg3,reg3_,10);
+		sprintf(reg3_,"%d",reg3);
 		char op[100]="";
 		char l_reg[10]="";
-		itoa(reg1, l_reg, 10);
+		//itoa(reg1, l_reg, 10);
+		sprintf(l_reg,"%d",reg1);
 		char r_reg[10]="";
-		itoa(reg2, r_reg, 10);
+		//itoa(reg2, r_reg, 10);
+		sprintf(r_reg,"%d",reg2);
 
 		strcat(op, add);
 		strcat(op, "r");
@@ -555,12 +566,15 @@ int codegen(AST* root,node** ASM_head) {
 		int reg3 = find_avai_reg();
 		reg_arr[reg3] = 1;
 		char reg3_[10] = "";
-		itoa(reg3,reg3_,10);
+		//itoa(reg3,reg3_,10);
+		sprintf(reg3_,"%d",reg3);
 		char op[100]="";
 		char l_reg[10]="";
-		itoa(reg1, l_reg, 10);
+		//itoa(reg1, l_reg, 10);
+		sprintf(l_reg,"%d",reg1);
 		char r_reg[10]="";
-		itoa(reg2, r_reg, 10);
+		//itoa(reg2, r_reg, 10);
+		sprintf(r_reg,"%d",reg2);
 
 		strcat(op, sub);
 		strcat(op, " r");
@@ -581,12 +595,15 @@ int codegen(AST* root,node** ASM_head) {
         int reg3 = find_avai_reg();
         reg_arr[reg3] = 1;
 		char reg3_[10] = "";
-		itoa(reg3,reg3_,10);
+		//itoa(reg3,reg3_,10);
+		sprintf(reg3_,"%d",reg3);
 		char op[100]="";
 		char l_reg[10]="";
-		itoa(reg1, l_reg, 10);
+		//itoa(reg1, l_reg, 10);
+		sprintf(l_reg,"%d",reg1);
 		char r_reg[10]="";
-		itoa(reg2, r_reg, 10);
+		//itoa(reg2, r_reg, 10);
+		sprintf(r_reg,"%d",reg2);
 
 		strcat(op, mul);
 		strcat(op, " r");
@@ -607,12 +624,15 @@ int codegen(AST* root,node** ASM_head) {
         int reg3 = find_avai_reg();
         reg_arr[reg3] = 1;
 		char reg3_[10] = "";
-		itoa(reg3,reg3_,10);
+		//itoa(reg3,reg3_,10);
+		sprintf(reg3_,"%d",reg3);
 		char op[100]="";
 		char l_reg[10]="";
-		itoa(reg1, l_reg, 10);
+		//itoa(reg1, l_reg, 10);
+		sprintf(l_reg,"%d",reg1);
 		char r_reg[10]="";
-		itoa(reg2, r_reg, 10);
+		//itoa(reg2, r_reg, 10);
+		sprintf(r_reg,"%d",reg2);
 
 		strcat(op, div);
 		strcat(op, " r");
@@ -633,12 +653,15 @@ int codegen(AST* root,node** ASM_head) {
         int reg3 = find_avai_reg();
         reg_arr[reg3] = 1;
 		char reg3_[10] = "";
-		itoa(reg3,reg3_,10);
+		//itoa(reg3,reg3_,10);
+		sprintf(reg3_,"%d",reg3);
 		char op[100]="";
 		char l_reg[10]="";
-		itoa(reg1, l_reg, 10);
+		//itoa(reg1, l_reg, 10);
+		sprintf(l_reg,"%d",reg1);
 		char r_reg[10]="";
-		itoa(reg2, r_reg, 10);
+		//itoa(reg2, r_reg, 10);
+		sprintf(r_reg,"%d",reg2);
 
 		strcat(op, rem);
 		strcat(op, " r");
@@ -659,10 +682,12 @@ int codegen(AST* root,node** ASM_head) {
         reg_arr[reg] = 1;
         char op[100]="";
         char reg_1[10]="";
-        itoa(num,reg_1,10);
-        char reg_2[10]="";
-        itoa(reg,reg_2,10);
-        if(num >= 0)
+        //itoa(num,reg_1,10);
+        sprintf(reg_1,"%d",num);
+		char reg_2[10]="";
+        //itoa(reg,reg_2,10);
+        sprintf(reg_2,"%d",reg);
+		if(num >= 0)
         {
             strcat(op,add);
             strcat(op,"r");
@@ -692,9 +717,12 @@ int codegen(AST* root,node** ASM_head) {
         char reg_[10]="";
         char op[100]="";
         char id_[10]="";
-        itoa(id,id_,10);
-        itoa(reg,reg_,10);
-        strcat(op,load);
+        //itoa(id,id_,10);
+        sprintf(id_,"%d",id);
+		//itoa(reg,reg_,10);
+        sprintf(reg_,"%d",reg);
+
+		strcat(op,load);
         strcat(op,"r");
         strcat(op,reg_);
         strcat(op," [");
@@ -715,9 +743,11 @@ int codegen(AST* root,node** ASM_head) {
         char reg_[10]="";
         char op[100]="";
         char mid_[10] = "";
-        itoa(mid,mid_,10);
-        itoa(reg,reg_,10);
-        strcat(op,sub);
+        //itoa(mid,mid_,10);
+        sprintf(mid_,"%d",mid);
+		//itoa(reg,reg_,10);
+        sprintf(reg_,"%d",reg);
+		strcat(op,sub);
         strcat(op,"r");
         strcat(op,reg_);
         strcat(op," 0 ");
@@ -731,8 +761,9 @@ int codegen(AST* root,node** ASM_head) {
         int mid = codegen(root->mid,ASM_head);
         char op_1[100] = "";
         char mid_[10] = "";
-        itoa(mid,mid_,10);
-        strcat(op_1,add);
+        //itoa(mid,mid_,10);
+        sprintf(mid_,"%d",mid);
+		strcat(op_1,add);
         strcat(op_1,"r");
         strcat(op_1,mid_);
         strcat(op_1," r");
@@ -741,8 +772,9 @@ int codegen(AST* root,node** ASM_head) {
         insert(ASM_head,op_1,PREINC_);
         char op_2[100]="";
         char store_[10]="";
-        itoa(get_expr(root),store_,10);
-        strcat(op_2,store);
+        //itoa(get_expr(root),store_,10);
+        sprintf(store_,"%d",get_expr(root));
+		strcat(op_2,store);
         strcat(op_2,"[");
         strcat(op_2,store_);
         strcat(op_2,"]");
@@ -756,8 +788,9 @@ int codegen(AST* root,node** ASM_head) {
         int mid = codegen(root->mid,ASM_head);
         char op_1[100] = "";
         char mid_[10] = "";
-        itoa(mid,mid_,10);
-        strcat(op_1,sub);
+        //itoa(mid,mid_,10);
+        sprintf(mid_,"%d",mid);
+		strcat(op_1,sub);
         strcat(op_1,"r");
         strcat(op_1,mid_);
         strcat(op_1," r");
@@ -766,8 +799,9 @@ int codegen(AST* root,node** ASM_head) {
         insert(ASM_head,op_1,PREDEC_);
         char op_2[100]="";
         char store_[10]="";
-        itoa(get_expr(root),store_,10);
-        strcat(op_2,store);
+        //itoa(get_expr(root),store_,10);
+        sprintf(store_,"%d",get_expr(root));
+		strcat(op_2,store);
         strcat(op_2,"[");
         strcat(op_2,store_);
         strcat(op_2,"]");
