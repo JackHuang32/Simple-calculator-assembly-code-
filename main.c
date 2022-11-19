@@ -577,7 +577,7 @@ int codegen(AST* root,node** ASM_head) {
 		sprintf(r_reg,"%d",reg2);
 
 		strcat(op, sub);
-		strcat(op, " r");
+		strcat(op, "r");
 		strcat(op, reg3_);
 		strcat(op, " r");
 		strcat(op, l_reg);
@@ -606,7 +606,7 @@ int codegen(AST* root,node** ASM_head) {
 		sprintf(r_reg,"%d",reg2);
 
 		strcat(op, mul);
-		strcat(op, " r");
+		strcat(op, "r");
 		strcat(op, reg3_);
 		strcat(op, " r");
 		strcat(op, l_reg);
@@ -635,7 +635,7 @@ int codegen(AST* root,node** ASM_head) {
 		sprintf(r_reg,"%d",reg2);
 
 		strcat(op, div);
-		strcat(op, " r");
+		strcat(op, "r");
 		strcat(op, reg3_);
 		strcat(op, " r");
 		strcat(op, l_reg);
@@ -664,7 +664,7 @@ int codegen(AST* root,node** ASM_head) {
 		sprintf(r_reg,"%d",reg2);
 
 		strcat(op, rem);
-		strcat(op, " r");
+		strcat(op, "r");
 		strcat(op, reg3_);
 		strcat(op, " r");
 		strcat(op, l_reg);
