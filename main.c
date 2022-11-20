@@ -481,6 +481,7 @@ void semantic_check(AST* now) {
 		}
 	}
 	if (now->lhs != NULL)semantic_check(now->lhs);
+	if(now->mid != NULL)semantic_check(now->mid);
 	if (now->rhs != NULL)semantic_check(now->rhs);
 }
 
